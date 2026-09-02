@@ -10,33 +10,232 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AbecedarioRouteImport } from './routes/abecedario'
+import { Route as AvanzadaRouteImport } from './routes/avanzada'
+import { Route as CalmaRouteImport } from './routes/calma'
+import { Route as ConfiguracionRouteImport } from './routes/configuracion'
+import { Route as EmocionesRouteImport } from './routes/emociones'
+import { Route as InicialRouteImport } from './routes/inicial'
+import { Route as MatematicasRouteImport } from './routes/matematicas'
+import { Route as MenuRouteImport } from './routes/menu'
+import { Route as MisionesRouteImport } from './routes/misiones'
+import { Route as MonosilabasRouteImport } from './routes/monosilabas'
+import { Route as PanelRouteImport } from './routes/panel'
+import { Route as ProgresoRouteImport } from './routes/progreso'
+import { Route as SenasRouteImport } from './routes/senas'
+import { Route as SilabasRouteImport } from './routes/silabas'
+import { Route as VocabularioRouteImport } from './routes/vocabulario'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AbecedarioRoute = AbecedarioRouteImport.update({
+  id: '/abecedario',
+  path: '/abecedario',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AvanzadaRoute = AvanzadaRouteImport.update({
+  id: '/avanzada',
+  path: '/avanzada',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalmaRoute = CalmaRouteImport.update({
+  id: '/calma',
+  path: '/calma',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfiguracionRoute = ConfiguracionRouteImport.update({
+  id: '/configuracion',
+  path: '/configuracion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmocionesRoute = EmocionesRouteImport.update({
+  id: '/emociones',
+  path: '/emociones',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InicialRoute = InicialRouteImport.update({
+  id: '/inicial',
+  path: '/inicial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MatematicasRoute = MatematicasRouteImport.update({
+  id: '/matematicas',
+  path: '/matematicas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuRoute = MenuRouteImport.update({
+  id: '/menu',
+  path: '/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MisionesRoute = MisionesRouteImport.update({
+  id: '/misiones',
+  path: '/misiones',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MonosilabasRoute = MonosilabasRouteImport.update({
+  id: '/monosilabas',
+  path: '/monosilabas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PanelRoute = PanelRouteImport.update({
+  id: '/panel',
+  path: '/panel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgresoRoute = ProgresoRouteImport.update({
+  id: '/progreso',
+  path: '/progreso',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SenasRoute = SenasRouteImport.update({
+  id: '/senas',
+  path: '/senas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SilabasRoute = SilabasRouteImport.update({
+  id: '/silabas',
+  path: '/silabas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VocabularioRoute = VocabularioRouteImport.update({
+  id: '/vocabulario',
+  path: '/vocabulario',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/abecedario': typeof AbecedarioRoute
+  '/avanzada': typeof AvanzadaRoute
+  '/calma': typeof CalmaRoute
+  '/configuracion': typeof ConfiguracionRoute
+  '/emociones': typeof EmocionesRoute
+  '/inicial': typeof InicialRoute
+  '/matematicas': typeof MatematicasRoute
+  '/menu': typeof MenuRoute
+  '/misiones': typeof MisionesRoute
+  '/monosilabas': typeof MonosilabasRoute
+  '/panel': typeof PanelRoute
+  '/progreso': typeof ProgresoRoute
+  '/senas': typeof SenasRoute
+  '/silabas': typeof SilabasRoute
+  '/vocabulario': typeof VocabularioRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/abecedario': typeof AbecedarioRoute
+  '/avanzada': typeof AvanzadaRoute
+  '/calma': typeof CalmaRoute
+  '/configuracion': typeof ConfiguracionRoute
+  '/emociones': typeof EmocionesRoute
+  '/inicial': typeof InicialRoute
+  '/matematicas': typeof MatematicasRoute
+  '/menu': typeof MenuRoute
+  '/misiones': typeof MisionesRoute
+  '/monosilabas': typeof MonosilabasRoute
+  '/panel': typeof PanelRoute
+  '/progreso': typeof ProgresoRoute
+  '/senas': typeof SenasRoute
+  '/silabas': typeof SilabasRoute
+  '/vocabulario': typeof VocabularioRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/abecedario': typeof AbecedarioRoute
+  '/avanzada': typeof AvanzadaRoute
+  '/calma': typeof CalmaRoute
+  '/configuracion': typeof ConfiguracionRoute
+  '/emociones': typeof EmocionesRoute
+  '/inicial': typeof InicialRoute
+  '/matematicas': typeof MatematicasRoute
+  '/menu': typeof MenuRoute
+  '/misiones': typeof MisionesRoute
+  '/monosilabas': typeof MonosilabasRoute
+  '/panel': typeof PanelRoute
+  '/progreso': typeof ProgresoRoute
+  '/senas': typeof SenasRoute
+  '/silabas': typeof SilabasRoute
+  '/vocabulario': typeof VocabularioRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/abecedario'
+    | '/avanzada'
+    | '/calma'
+    | '/configuracion'
+    | '/emociones'
+    | '/inicial'
+    | '/matematicas'
+    | '/menu'
+    | '/misiones'
+    | '/monosilabas'
+    | '/panel'
+    | '/progreso'
+    | '/senas'
+    | '/silabas'
+    | '/vocabulario'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/abecedario'
+    | '/avanzada'
+    | '/calma'
+    | '/configuracion'
+    | '/emociones'
+    | '/inicial'
+    | '/matematicas'
+    | '/menu'
+    | '/misiones'
+    | '/monosilabas'
+    | '/panel'
+    | '/progreso'
+    | '/senas'
+    | '/silabas'
+    | '/vocabulario'
+  id:
+    | '__root__'
+    | '/'
+    | '/abecedario'
+    | '/avanzada'
+    | '/calma'
+    | '/configuracion'
+    | '/emociones'
+    | '/inicial'
+    | '/matematicas'
+    | '/menu'
+    | '/misiones'
+    | '/monosilabas'
+    | '/panel'
+    | '/progreso'
+    | '/senas'
+    | '/silabas'
+    | '/vocabulario'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AbecedarioRoute: typeof AbecedarioRoute
+  AvanzadaRoute: typeof AvanzadaRoute
+  CalmaRoute: typeof CalmaRoute
+  ConfiguracionRoute: typeof ConfiguracionRoute
+  EmocionesRoute: typeof EmocionesRoute
+  InicialRoute: typeof InicialRoute
+  MatematicasRoute: typeof MatematicasRoute
+  MenuRoute: typeof MenuRoute
+  MisionesRoute: typeof MisionesRoute
+  MonosilabasRoute: typeof MonosilabasRoute
+  PanelRoute: typeof PanelRoute
+  ProgresoRoute: typeof ProgresoRoute
+  SenasRoute: typeof SenasRoute
+  SilabasRoute: typeof SilabasRoute
+  VocabularioRoute: typeof VocabularioRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +247,131 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/abecedario': {
+      id: '/abecedario'
+      path: '/abecedario'
+      fullPath: '/abecedario'
+      preLoaderRoute: typeof AbecedarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/avanzada': {
+      id: '/avanzada'
+      path: '/avanzada'
+      fullPath: '/avanzada'
+      preLoaderRoute: typeof AvanzadaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calma': {
+      id: '/calma'
+      path: '/calma'
+      fullPath: '/calma'
+      preLoaderRoute: typeof CalmaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/configuracion': {
+      id: '/configuracion'
+      path: '/configuracion'
+      fullPath: '/configuracion'
+      preLoaderRoute: typeof ConfiguracionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emociones': {
+      id: '/emociones'
+      path: '/emociones'
+      fullPath: '/emociones'
+      preLoaderRoute: typeof EmocionesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inicial': {
+      id: '/inicial'
+      path: '/inicial'
+      fullPath: '/inicial'
+      preLoaderRoute: typeof InicialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/matematicas': {
+      id: '/matematicas'
+      path: '/matematicas'
+      fullPath: '/matematicas'
+      preLoaderRoute: typeof MatematicasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu': {
+      id: '/menu'
+      path: '/menu'
+      fullPath: '/menu'
+      preLoaderRoute: typeof MenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/misiones': {
+      id: '/misiones'
+      path: '/misiones'
+      fullPath: '/misiones'
+      preLoaderRoute: typeof MisionesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/monosilabas': {
+      id: '/monosilabas'
+      path: '/monosilabas'
+      fullPath: '/monosilabas'
+      preLoaderRoute: typeof MonosilabasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/panel': {
+      id: '/panel'
+      path: '/panel'
+      fullPath: '/panel'
+      preLoaderRoute: typeof PanelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progreso': {
+      id: '/progreso'
+      path: '/progreso'
+      fullPath: '/progreso'
+      preLoaderRoute: typeof ProgresoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/senas': {
+      id: '/senas'
+      path: '/senas'
+      fullPath: '/senas'
+      preLoaderRoute: typeof SenasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/silabas': {
+      id: '/silabas'
+      path: '/silabas'
+      fullPath: '/silabas'
+      preLoaderRoute: typeof SilabasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vocabulario': {
+      id: '/vocabulario'
+      path: '/vocabulario'
+      fullPath: '/vocabulario'
+      preLoaderRoute: typeof VocabularioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AbecedarioRoute: AbecedarioRoute,
+  AvanzadaRoute: AvanzadaRoute,
+  CalmaRoute: CalmaRoute,
+  ConfiguracionRoute: ConfiguracionRoute,
+  EmocionesRoute: EmocionesRoute,
+  InicialRoute: InicialRoute,
+  MatematicasRoute: MatematicasRoute,
+  MenuRoute: MenuRoute,
+  MisionesRoute: MisionesRoute,
+  MonosilabasRoute: MonosilabasRoute,
+  PanelRoute: PanelRoute,
+  ProgresoRoute: ProgresoRoute,
+  SenasRoute: SenasRoute,
+  SilabasRoute: SilabasRoute,
+  VocabularioRoute: VocabularioRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
