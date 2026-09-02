@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AbecedarioRouteImport } from './routes/abecedario'
+import { Route as EmocionesRouteImport } from './routes/emociones'
 import { Route as InicialRouteImport } from './routes/inicial'
 import { Route as MenuRouteImport } from './routes/menu'
 import { Route as MonosilabasRouteImport } from './routes/monosilabas'
@@ -26,6 +27,11 @@ const IndexRoute = IndexRouteImport.update({
 const AbecedarioRoute = AbecedarioRouteImport.update({
   id: '/abecedario',
   path: '/abecedario',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmocionesRoute = EmocionesRouteImport.update({
+  id: '/emociones',
+  path: '/emociones',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InicialRoute = InicialRouteImport.update({
@@ -62,6 +68,7 @@ const VocabularioRoute = VocabularioRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/abecedario': typeof AbecedarioRoute
+  '/emociones': typeof EmocionesRoute
   '/inicial': typeof InicialRoute
   '/menu': typeof MenuRoute
   '/monosilabas': typeof MonosilabasRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/abecedario': typeof AbecedarioRoute
+  '/emociones': typeof EmocionesRoute
   '/inicial': typeof InicialRoute
   '/menu': typeof MenuRoute
   '/monosilabas': typeof MonosilabasRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/abecedario': typeof AbecedarioRoute
+  '/emociones': typeof EmocionesRoute
   '/inicial': typeof InicialRoute
   '/menu': typeof MenuRoute
   '/monosilabas': typeof MonosilabasRoute
@@ -95,6 +104,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/abecedario'
+    | '/emociones'
     | '/inicial'
     | '/menu'
     | '/monosilabas'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/abecedario'
+    | '/emociones'
     | '/inicial'
     | '/menu'
     | '/monosilabas'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/abecedario'
+    | '/emociones'
     | '/inicial'
     | '/menu'
     | '/monosilabas'
@@ -126,6 +138,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AbecedarioRoute: typeof AbecedarioRoute
+  EmocionesRoute: typeof EmocionesRoute
   InicialRoute: typeof InicialRoute
   MenuRoute: typeof MenuRoute
   MonosilabasRoute: typeof MonosilabasRoute
@@ -148,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/abecedario'
       fullPath: '/abecedario'
       preLoaderRoute: typeof AbecedarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emociones': {
+      id: '/emociones'
+      path: '/emociones'
+      fullPath: '/emociones'
+      preLoaderRoute: typeof EmocionesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/inicial': {
@@ -198,6 +218,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AbecedarioRoute: AbecedarioRoute,
+  EmocionesRoute: EmocionesRoute,
   InicialRoute: InicialRoute,
   MenuRoute: MenuRoute,
   MonosilabasRoute: MonosilabasRoute,
