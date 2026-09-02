@@ -67,10 +67,12 @@ function CalmaScreen() {
 
   useEffect(() => {
     if (!activo) return;
-    setRestante(SECUENCIA[paso].segundos);
+    const step = SECUENCIA[paso] ?? SECUENCIA[0]!;
+    setRestante(step.segundos);
     if (dicho.current !== paso) {
       dicho.current = paso;
-      say(SECUENCIA[paso].texto);
+      say(step.texto);
+
     }
   }, [paso, activo]);
 
