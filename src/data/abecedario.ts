@@ -79,5 +79,5 @@ export const ABC_SETS: AbcSet[] = [
 ];
 
 export function getAbcSet(key: string): AbcSet {
-  return ABC_SETS.find((s) => s.key === key) ?? ABC_SETS[0];
+  return (ABC_SETS.find((s) => s.key === key) ?? ABC_SETS[0]) as AbcSet;
 }
