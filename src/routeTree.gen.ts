@@ -20,6 +20,7 @@ import { Route as MatematicasRouteImport } from './routes/matematicas'
 import { Route as MenuRouteImport } from './routes/menu'
 import { Route as MisionesRouteImport } from './routes/misiones'
 import { Route as MonosilabasRouteImport } from './routes/monosilabas'
+import { Route as PanelRouteImport } from './routes/panel'
 import { Route as ProgresoRouteImport } from './routes/progreso'
 import { Route as SenasRouteImport } from './routes/senas'
 import { Route as SilabasRouteImport } from './routes/silabas'
@@ -80,6 +81,11 @@ const MonosilabasRoute = MonosilabasRouteImport.update({
   path: '/monosilabas',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PanelRoute = PanelRouteImport.update({
+  id: '/panel',
+  path: '/panel',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgresoRoute = ProgresoRouteImport.update({
   id: '/progreso',
   path: '/progreso',
@@ -113,6 +119,7 @@ export interface FileRoutesByFullPath {
   '/menu': typeof MenuRoute
   '/misiones': typeof MisionesRoute
   '/monosilabas': typeof MonosilabasRoute
+  '/panel': typeof PanelRoute
   '/progreso': typeof ProgresoRoute
   '/senas': typeof SenasRoute
   '/silabas': typeof SilabasRoute
@@ -130,6 +137,7 @@ export interface FileRoutesByTo {
   '/menu': typeof MenuRoute
   '/misiones': typeof MisionesRoute
   '/monosilabas': typeof MonosilabasRoute
+  '/panel': typeof PanelRoute
   '/progreso': typeof ProgresoRoute
   '/senas': typeof SenasRoute
   '/silabas': typeof SilabasRoute
@@ -148,6 +156,7 @@ export interface FileRoutesById {
   '/menu': typeof MenuRoute
   '/misiones': typeof MisionesRoute
   '/monosilabas': typeof MonosilabasRoute
+  '/panel': typeof PanelRoute
   '/progreso': typeof ProgresoRoute
   '/senas': typeof SenasRoute
   '/silabas': typeof SilabasRoute
@@ -167,6 +176,7 @@ export interface FileRouteTypes {
     | '/menu'
     | '/misiones'
     | '/monosilabas'
+    | '/panel'
     | '/progreso'
     | '/senas'
     | '/silabas'
@@ -184,6 +194,7 @@ export interface FileRouteTypes {
     | '/menu'
     | '/misiones'
     | '/monosilabas'
+    | '/panel'
     | '/progreso'
     | '/senas'
     | '/silabas'
@@ -201,6 +212,7 @@ export interface FileRouteTypes {
     | '/menu'
     | '/misiones'
     | '/monosilabas'
+    | '/panel'
     | '/progreso'
     | '/senas'
     | '/silabas'
@@ -219,6 +231,7 @@ export interface RootRouteChildren {
   MenuRoute: typeof MenuRoute
   MisionesRoute: typeof MisionesRoute
   MonosilabasRoute: typeof MonosilabasRoute
+  PanelRoute: typeof PanelRoute
   ProgresoRoute: typeof ProgresoRoute
   SenasRoute: typeof SenasRoute
   SilabasRoute: typeof SilabasRoute
@@ -304,6 +317,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MonosilabasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/panel': {
+      id: '/panel'
+      path: '/panel'
+      fullPath: '/panel'
+      preLoaderRoute: typeof PanelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/progreso': {
       id: '/progreso'
       path: '/progreso'
@@ -347,6 +367,7 @@ const rootRouteChildren: RootRouteChildren = {
   MenuRoute: MenuRoute,
   MisionesRoute: MisionesRoute,
   MonosilabasRoute: MonosilabasRoute,
+  PanelRoute: PanelRoute,
   ProgresoRoute: ProgresoRoute,
   SenasRoute: SenasRoute,
   SilabasRoute: SilabasRoute,
