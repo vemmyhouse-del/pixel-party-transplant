@@ -14,6 +14,7 @@ import { Route as AbecedarioRouteImport } from './routes/abecedario'
 import { Route as InicialRouteImport } from './routes/inicial'
 import { Route as MenuRouteImport } from './routes/menu'
 import { Route as MonosilabasRouteImport } from './routes/monosilabas'
+import { Route as SenasRouteImport } from './routes/senas'
 import { Route as SilabasRouteImport } from './routes/silabas'
 import { Route as VocabularioRouteImport } from './routes/vocabulario'
 
@@ -42,6 +43,11 @@ const MonosilabasRoute = MonosilabasRouteImport.update({
   path: '/monosilabas',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SenasRoute = SenasRouteImport.update({
+  id: '/senas',
+  path: '/senas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SilabasRoute = SilabasRouteImport.update({
   id: '/silabas',
   path: '/silabas',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/inicial': typeof InicialRoute
   '/menu': typeof MenuRoute
   '/monosilabas': typeof MonosilabasRoute
+  '/senas': typeof SenasRoute
   '/silabas': typeof SilabasRoute
   '/vocabulario': typeof VocabularioRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/inicial': typeof InicialRoute
   '/menu': typeof MenuRoute
   '/monosilabas': typeof MonosilabasRoute
+  '/senas': typeof SenasRoute
   '/silabas': typeof SilabasRoute
   '/vocabulario': typeof VocabularioRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/inicial': typeof InicialRoute
   '/menu': typeof MenuRoute
   '/monosilabas': typeof MonosilabasRoute
+  '/senas': typeof SenasRoute
   '/silabas': typeof SilabasRoute
   '/vocabulario': typeof VocabularioRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/inicial'
     | '/menu'
     | '/monosilabas'
+    | '/senas'
     | '/silabas'
     | '/vocabulario'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/inicial'
     | '/menu'
     | '/monosilabas'
+    | '/senas'
     | '/silabas'
     | '/vocabulario'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/inicial'
     | '/menu'
     | '/monosilabas'
+    | '/senas'
     | '/silabas'
     | '/vocabulario'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   InicialRoute: typeof InicialRoute
   MenuRoute: typeof MenuRoute
   MonosilabasRoute: typeof MonosilabasRoute
+  SenasRoute: typeof SenasRoute
   SilabasRoute: typeof SilabasRoute
   VocabularioRoute: typeof VocabularioRoute
 }
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MonosilabasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/senas': {
+      id: '/senas'
+      path: '/senas'
+      fullPath: '/senas'
+      preLoaderRoute: typeof SenasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/silabas': {
       id: '/silabas'
       path: '/silabas'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   InicialRoute: InicialRoute,
   MenuRoute: MenuRoute,
   MonosilabasRoute: MonosilabasRoute,
+  SenasRoute: SenasRoute,
   SilabasRoute: SilabasRoute,
   VocabularioRoute: VocabularioRoute,
 }
