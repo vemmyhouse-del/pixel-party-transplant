@@ -42,11 +42,12 @@ function CalmaScreen() {
   const user = useSessionUser();
   const [activo, setActivo] = useState(false);
   const [paso, setPaso] = useState(0);
-  const [restante, setRestante] = useState(SECUENCIA[0].segundos);
+  const [restante, setRestante] = useState(SECUENCIA[0]!.segundos);
   const [ciclos, setCiclos] = useState(0);
   const dicho = useRef<number>(-1);
 
-  const actual = SECUENCIA[paso];
+  const actual = SECUENCIA[paso] ?? SECUENCIA[0]!;
+
 
   useEffect(() => {
     if (!activo) return;
