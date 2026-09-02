@@ -1,6 +1,13 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
-import { Card, PrimaryButton, SoftLabel, useSessionUser } from "@/components/ocupamor/ui";
+import {
+  Card,
+  PrimaryButton,
+  Screen,
+  SoftLabel,
+  useSessionUser,
+} from "@/components/ocupamor/ui";
+
 
 export const Route = createFileRoute("/inicial")({
   head: () => ({
