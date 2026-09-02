@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AbecedarioRouteImport } from './routes/abecedario'
+import { Route as AvanzadaRouteImport } from './routes/avanzada'
 import { Route as CalmaRouteImport } from './routes/calma'
 import { Route as EmocionesRouteImport } from './routes/emociones'
 import { Route as InicialRouteImport } from './routes/inicial'
@@ -29,6 +30,11 @@ const IndexRoute = IndexRouteImport.update({
 const AbecedarioRoute = AbecedarioRouteImport.update({
   id: '/abecedario',
   path: '/abecedario',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AvanzadaRoute = AvanzadaRouteImport.update({
+  id: '/avanzada',
+  path: '/avanzada',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalmaRoute = CalmaRouteImport.update({
@@ -80,6 +86,7 @@ const VocabularioRoute = VocabularioRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/abecedario': typeof AbecedarioRoute
+  '/avanzada': typeof AvanzadaRoute
   '/calma': typeof CalmaRoute
   '/emociones': typeof EmocionesRoute
   '/inicial': typeof InicialRoute
@@ -93,6 +100,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/abecedario': typeof AbecedarioRoute
+  '/avanzada': typeof AvanzadaRoute
   '/calma': typeof CalmaRoute
   '/emociones': typeof EmocionesRoute
   '/inicial': typeof InicialRoute
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/abecedario': typeof AbecedarioRoute
+  '/avanzada': typeof AvanzadaRoute
   '/calma': typeof CalmaRoute
   '/emociones': typeof EmocionesRoute
   '/inicial': typeof InicialRoute
@@ -122,6 +131,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/abecedario'
+    | '/avanzada'
     | '/calma'
     | '/emociones'
     | '/inicial'
@@ -135,6 +145,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/abecedario'
+    | '/avanzada'
     | '/calma'
     | '/emociones'
     | '/inicial'
@@ -148,6 +159,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/abecedario'
+    | '/avanzada'
     | '/calma'
     | '/emociones'
     | '/inicial'
@@ -162,6 +174,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AbecedarioRoute: typeof AbecedarioRoute
+  AvanzadaRoute: typeof AvanzadaRoute
   CalmaRoute: typeof CalmaRoute
   EmocionesRoute: typeof EmocionesRoute
   InicialRoute: typeof InicialRoute
@@ -187,6 +200,13 @@ declare module '@tanstack/react-router' {
       path: '/abecedario'
       fullPath: '/abecedario'
       preLoaderRoute: typeof AbecedarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/avanzada': {
+      id: '/avanzada'
+      path: '/avanzada'
+      fullPath: '/avanzada'
+      preLoaderRoute: typeof AvanzadaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calma': {
@@ -258,6 +278,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AbecedarioRoute: AbecedarioRoute,
+  AvanzadaRoute: AvanzadaRoute,
   CalmaRoute: CalmaRoute,
   EmocionesRoute: EmocionesRoute,
   InicialRoute: InicialRoute,
