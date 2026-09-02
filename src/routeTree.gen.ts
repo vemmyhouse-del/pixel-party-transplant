@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AbecedarioRouteImport } from './routes/abecedario'
 import { Route as InicialRouteImport } from './routes/inicial'
 import { Route as MenuRouteImport } from './routes/menu'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AbecedarioRoute = AbecedarioRouteImport.update({
+  id: '/abecedario',
+  path: '/abecedario',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InicialRoute = InicialRouteImport.update({
@@ -31,30 +37,34 @@ const MenuRoute = MenuRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/abecedario': typeof AbecedarioRoute
   '/inicial': typeof InicialRoute
   '/menu': typeof MenuRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/abecedario': typeof AbecedarioRoute
   '/inicial': typeof InicialRoute
   '/menu': typeof MenuRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/abecedario': typeof AbecedarioRoute
   '/inicial': typeof InicialRoute
   '/menu': typeof MenuRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/inicial' | '/menu'
+  fullPaths: '/' | '/abecedario' | '/inicial' | '/menu'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/inicial' | '/menu'
-  id: '__root__' | '/' | '/inicial' | '/menu'
+  to: '/' | '/abecedario' | '/inicial' | '/menu'
+  id: '__root__' | '/' | '/abecedario' | '/inicial' | '/menu'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AbecedarioRoute: typeof AbecedarioRoute
   InicialRoute: typeof InicialRoute
   MenuRoute: typeof MenuRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/abecedario': {
+      id: '/abecedario'
+      path: '/abecedario'
+      fullPath: '/abecedario'
+      preLoaderRoute: typeof AbecedarioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/inicial': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AbecedarioRoute: AbecedarioRoute,
   InicialRoute: InicialRoute,
   MenuRoute: MenuRoute,
 }
