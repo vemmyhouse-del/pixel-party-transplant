@@ -38,7 +38,7 @@ function MisionesScreen() {
   const [misiones, setMisiones] = useState<Mission[]>([]);
   const [titulo, setTitulo] = useState("");
   const [meta, setMeta] = useState(5);
-  const [cat, setCat] = useState(LEARNING_CATEGORIES[0][0]);
+  const [cat, setCat] = useState(LEARNING_CATEGORIES[0]![0]);
 
   useEffect(() => {
     if (user) setMisiones(getMissions(user.email));
