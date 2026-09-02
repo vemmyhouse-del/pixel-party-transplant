@@ -33,7 +33,7 @@ function InicialHub() {
   useSessionUser();
 
   return (
-    <ScreenWrapper>
+    <Screen title="Etapa Inicial" subtitle="Elige un área de aprendizaje">
       <SoftLabel bold size="lg">
         ¿Qué quieres aprender hoy?
       </SoftLabel>
