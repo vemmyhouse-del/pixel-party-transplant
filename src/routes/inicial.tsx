@@ -129,15 +129,7 @@ function InicialHub() {
           Ir a Vocabulario
         </PrimaryButton>
       </Card>
-    </ScreenWrapper>
-  );
-}
-
-function ScreenWrapper({ children }: { children: React.ReactNode }) {
-  const { Screen } = require("@/components/ocupamor/ui") as typeof import("@/components/ocupamor/ui");
-  return (
-    <Screen title="Etapa Inicial" subtitle="Elige un área de aprendizaje">
-      {children}
     </Screen>
   );
 }
+
