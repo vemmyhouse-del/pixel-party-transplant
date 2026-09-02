@@ -17,6 +17,7 @@ import { Route as EmocionesRouteImport } from './routes/emociones'
 import { Route as InicialRouteImport } from './routes/inicial'
 import { Route as MatematicasRouteImport } from './routes/matematicas'
 import { Route as MenuRouteImport } from './routes/menu'
+import { Route as MisionesRouteImport } from './routes/misiones'
 import { Route as MonosilabasRouteImport } from './routes/monosilabas'
 import { Route as SenasRouteImport } from './routes/senas'
 import { Route as SilabasRouteImport } from './routes/silabas'
@@ -62,6 +63,11 @@ const MenuRoute = MenuRouteImport.update({
   path: '/menu',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MisionesRoute = MisionesRouteImport.update({
+  id: '/misiones',
+  path: '/misiones',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MonosilabasRoute = MonosilabasRouteImport.update({
   id: '/monosilabas',
   path: '/monosilabas',
@@ -92,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/inicial': typeof InicialRoute
   '/matematicas': typeof MatematicasRoute
   '/menu': typeof MenuRoute
+  '/misiones': typeof MisionesRoute
   '/monosilabas': typeof MonosilabasRoute
   '/senas': typeof SenasRoute
   '/silabas': typeof SilabasRoute
@@ -106,6 +113,7 @@ export interface FileRoutesByTo {
   '/inicial': typeof InicialRoute
   '/matematicas': typeof MatematicasRoute
   '/menu': typeof MenuRoute
+  '/misiones': typeof MisionesRoute
   '/monosilabas': typeof MonosilabasRoute
   '/senas': typeof SenasRoute
   '/silabas': typeof SilabasRoute
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/inicial': typeof InicialRoute
   '/matematicas': typeof MatematicasRoute
   '/menu': typeof MenuRoute
+  '/misiones': typeof MisionesRoute
   '/monosilabas': typeof MonosilabasRoute
   '/senas': typeof SenasRoute
   '/silabas': typeof SilabasRoute
@@ -137,6 +146,7 @@ export interface FileRouteTypes {
     | '/inicial'
     | '/matematicas'
     | '/menu'
+    | '/misiones'
     | '/monosilabas'
     | '/senas'
     | '/silabas'
@@ -151,6 +161,7 @@ export interface FileRouteTypes {
     | '/inicial'
     | '/matematicas'
     | '/menu'
+    | '/misiones'
     | '/monosilabas'
     | '/senas'
     | '/silabas'
@@ -165,6 +176,7 @@ export interface FileRouteTypes {
     | '/inicial'
     | '/matematicas'
     | '/menu'
+    | '/misiones'
     | '/monosilabas'
     | '/senas'
     | '/silabas'
@@ -180,6 +192,7 @@ export interface RootRouteChildren {
   InicialRoute: typeof InicialRoute
   MatematicasRoute: typeof MatematicasRoute
   MenuRoute: typeof MenuRoute
+  MisionesRoute: typeof MisionesRoute
   MonosilabasRoute: typeof MonosilabasRoute
   SenasRoute: typeof SenasRoute
   SilabasRoute: typeof SilabasRoute
@@ -244,6 +257,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MenuRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/misiones': {
+      id: '/misiones'
+      path: '/misiones'
+      fullPath: '/misiones'
+      preLoaderRoute: typeof MisionesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/monosilabas': {
       id: '/monosilabas'
       path: '/monosilabas'
@@ -284,6 +304,7 @@ const rootRouteChildren: RootRouteChildren = {
   InicialRoute: InicialRoute,
   MatematicasRoute: MatematicasRoute,
   MenuRoute: MenuRoute,
+  MisionesRoute: MisionesRoute,
   MonosilabasRoute: MonosilabasRoute,
   SenasRoute: SenasRoute,
   SilabasRoute: SilabasRoute,
