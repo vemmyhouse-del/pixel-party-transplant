@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import {
   AudioButton,
@@ -8,7 +8,7 @@ import {
   SoftLabel,
   useSessionUser,
 } from "@/components/ocupamor/ui";
-import { SILABAS_GRUPOS } from "@/data/content";
+import { SILABAS } from "@/data/content";
 import { say } from "@/lib/speech";
 import { trackActivity } from "@/lib/store";
 import { cn } from "@/lib/utils";
@@ -20,12 +20,12 @@ export const Route = createFileRoute("/silabas")({
       {
         name: "description",
         content:
-          "Todas las sílabas agrupadas por consonante, con voz en español para repetir y practicar la lectura.",
+          "Sílabas agrupadas por consonante con voz en español para repetir y practicar la lectura con calma.",
       },
       { property: "og:title", content: "Sílabas por consonante — OCUPAMOR" },
       {
         property: "og:description",
-        content: "Practica ba-be-bi-bo-bu y todos los grupos silábicos con audio.",
+        content: "Practica ma-me-mi-mo-mu y los demás grupos silábicos con audio.",
       },
     ],
   }),
@@ -34,7 +34,18 @@ export const Route = createFileRoute("/silabas")({
 
 function SilabasScreen() {
   const user = useSessionUser();
-  const [open, setOpen] = useState(SILABAS_GRUPOS[0]?.consonante ?? "");
+
+  const grupos = useMemo(() => {
+    const map = new Map<string, string[]>();
+    for (const s of SILABAS) {
+      const key = s[0].toUpperCase();
+      map.set(key, [...(map.get(key) ?? []), s]);
+    }
+    return [...map.entries()];
+  }, []);
+
+  const [open, setOpen] = useState(grupos[0]?.[0] ?? "M");
+  const actual = grupos.find(([k]) => k === open);
 
   return (
     <Screen title="Sílabas" subtitle="Practica grupo por grupo">
@@ -43,52 +54,48 @@ function SilabasScreen() {
       </SoftLabel>
 
       <div className="flex flex-wrap gap-2">
-        {SILABAS_GRUPOS.map((g) => (
+        {grupos.map(([k]) => (
           <button
-            key={g.consonante}
+            key={k}
             type="button"
-            onClick={() => setOpen(g.consonante)}
+            onClick={() => setOpen(k)}
             className={cn(
               "min-h-11 min-w-11 rounded-2xl px-3 text-base font-bold transition active:opacity-80",
-              g.consonante === open
+              k === open
                 ? "bg-primary text-primary-foreground"
                 : "bg-soft text-foreground",
             )}
           >
-            {g.consonante}
+            {k}
           </button>
         ))}
       </div>
 
-      {SILABAS_GRUPOS.filter((g) => g.consonante === open).map((g) => (
-        <Card key={g.consonante}>
+      {actual && (
+        <Card>
           <SoftLabel bold size="lg">
-            Sílabas con {g.consonante}
+            Sílabas con {actual[0]}
           </SoftLabel>
-          <div className="mt-3 grid grid-cols-2 gap-3">
-            {g.silabas.map((s, i) => (
+          <div className="mt-3 grid grid-cols-3 gap-3">
+            {actual[1].map((s, i) => (
               <div
-                key={s.silaba}
-                className="rise-in flex flex-col items-center gap-1 rounded-3xl bg-soft-2 p-3"
-                style={{ animationDelay: `${i * 25}ms` }}
+                key={s}
+                className="rise-in flex flex-col items-center gap-2 rounded-3xl bg-soft-2 p-3"
+                style={{ animationDelay: `${i * 30}ms` }}
               >
                 <button
                   type="button"
                   onClick={() => {
-                    say(`${s.silaba} como en ${s.palabra}`);
+                    say(s);
                     trackActivity(user?.email, "silabas", true);
                   }}
-                  className="flex flex-col items-center active:opacity-70"
+                  className="text-2xl font-bold text-primary active:opacity-70"
                 >
-                  <span className="text-2xl font-bold text-primary">
-                    {s.silaba}
-                  </span>
-                  <span className="text-xs text-muted-foreground">
-                    {s.palabra}
-                  </span>
+                  {s}
                 </button>
                 <AudioButton
-                  text={s.silaba}
+                  text={s}
+                  label="Oír"
                   tone="calm"
                   onPlayed={() => trackActivity(user?.email, "silabas", true)}
                 />
@@ -96,7 +103,7 @@ function SilabasScreen() {
             ))}
           </div>
         </Card>
-      ))}
+      )}
     </Screen>
   );
 }
