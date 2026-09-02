@@ -116,7 +116,7 @@ export function login(
   if (u && u.password === hash(password)) {
     const user: User = {
       email: mail,
-      name: u.name || mail.split("@")[0],
+      name: u.name || mail.split("@")[0] || mail,
       role: u.role || "representante",
     };
     write(K_SESSION, user);
