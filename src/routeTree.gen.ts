@@ -14,6 +14,7 @@ import { Route as AbecedarioRouteImport } from './routes/abecedario'
 import { Route as CalmaRouteImport } from './routes/calma'
 import { Route as EmocionesRouteImport } from './routes/emociones'
 import { Route as InicialRouteImport } from './routes/inicial'
+import { Route as MatematicasRouteImport } from './routes/matematicas'
 import { Route as MenuRouteImport } from './routes/menu'
 import { Route as MonosilabasRouteImport } from './routes/monosilabas'
 import { Route as SenasRouteImport } from './routes/senas'
@@ -43,6 +44,11 @@ const EmocionesRoute = EmocionesRouteImport.update({
 const InicialRoute = InicialRouteImport.update({
   id: '/inicial',
   path: '/inicial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MatematicasRoute = MatematicasRouteImport.update({
+  id: '/matematicas',
+  path: '/matematicas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MenuRoute = MenuRouteImport.update({
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/calma': typeof CalmaRoute
   '/emociones': typeof EmocionesRoute
   '/inicial': typeof InicialRoute
+  '/matematicas': typeof MatematicasRoute
   '/menu': typeof MenuRoute
   '/monosilabas': typeof MonosilabasRoute
   '/senas': typeof SenasRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/calma': typeof CalmaRoute
   '/emociones': typeof EmocionesRoute
   '/inicial': typeof InicialRoute
+  '/matematicas': typeof MatematicasRoute
   '/menu': typeof MenuRoute
   '/monosilabas': typeof MonosilabasRoute
   '/senas': typeof SenasRoute
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/calma': typeof CalmaRoute
   '/emociones': typeof EmocionesRoute
   '/inicial': typeof InicialRoute
+  '/matematicas': typeof MatematicasRoute
   '/menu': typeof MenuRoute
   '/monosilabas': typeof MonosilabasRoute
   '/senas': typeof SenasRoute
@@ -116,6 +125,7 @@ export interface FileRouteTypes {
     | '/calma'
     | '/emociones'
     | '/inicial'
+    | '/matematicas'
     | '/menu'
     | '/monosilabas'
     | '/senas'
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
     | '/calma'
     | '/emociones'
     | '/inicial'
+    | '/matematicas'
     | '/menu'
     | '/monosilabas'
     | '/senas'
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '/calma'
     | '/emociones'
     | '/inicial'
+    | '/matematicas'
     | '/menu'
     | '/monosilabas'
     | '/senas'
@@ -153,6 +165,7 @@ export interface RootRouteChildren {
   CalmaRoute: typeof CalmaRoute
   EmocionesRoute: typeof EmocionesRoute
   InicialRoute: typeof InicialRoute
+  MatematicasRoute: typeof MatematicasRoute
   MenuRoute: typeof MenuRoute
   MonosilabasRoute: typeof MonosilabasRoute
   SenasRoute: typeof SenasRoute
@@ -195,6 +208,13 @@ declare module '@tanstack/react-router' {
       path: '/inicial'
       fullPath: '/inicial'
       preLoaderRoute: typeof InicialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/matematicas': {
+      id: '/matematicas'
+      path: '/matematicas'
+      fullPath: '/matematicas'
+      preLoaderRoute: typeof MatematicasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/menu': {
@@ -241,6 +261,7 @@ const rootRouteChildren: RootRouteChildren = {
   CalmaRoute: CalmaRoute,
   EmocionesRoute: EmocionesRoute,
   InicialRoute: InicialRoute,
+  MatematicasRoute: MatematicasRoute,
   MenuRoute: MenuRoute,
   MonosilabasRoute: MonosilabasRoute,
   SenasRoute: SenasRoute,
