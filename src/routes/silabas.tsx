@@ -38,7 +38,7 @@ function SilabasScreen() {
   const grupos = useMemo(() => {
     const map = new Map<string, string[]>();
     for (const s of SILABAS) {
-      const key = s[0].toUpperCase();
+      const key = s[0]!.toUpperCase();
       map.set(key, [...(map.get(key) ?? []), s]);
     }
     return [...map.entries()];
