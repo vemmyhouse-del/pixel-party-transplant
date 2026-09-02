@@ -1,0 +1,296 @@
+{
+ "comida": [
+  {
+   "letra": "A",
+   "palabra": "Aguacate",
+   "img": "comida/A.jpg"
+  },
+  {
+   "letra": "B",
+   "palabra": "Brócoli",
+   "img": "comida/B.jpg"
+  },
+  {
+   "letra": "C",
+   "palabra": "Cereza",
+   "img": "comida/C.jpg"
+  },
+  {
+   "letra": "CH",
+   "palabra": "Chirimoya",
+   "img": "comida/CH.jpg"
+  },
+  {
+   "letra": "D",
+   "palabra": "Durazno",
+   "img": "comida/D.jpg"
+  },
+  {
+   "letra": "E",
+   "palabra": "Espinaca",
+   "img": "comida/E.jpg"
+  },
+  {
+   "letra": "F",
+   "palabra": "Fresas",
+   "img": "comida/F.jpg"
+  },
+  {
+   "letra": "G",
+   "palabra": "Guanábana",
+   "img": "comida/G.jpg"
+  },
+  {
+   "letra": "H",
+   "palabra": "Higo",
+   "img": "comida/H.jpg"
+  },
+  {
+   "letra": "I",
+   "palabra": "Isla",
+   "img": "comida/I.jpg"
+  },
+  {
+   "letra": "J",
+   "palabra": "Jobo",
+   "img": "comida/J.jpg"
+  },
+  {
+   "letra": "K",
+   "palabra": "Kiwi",
+   "img": "comida/K.jpg"
+  },
+  {
+   "letra": "L",
+   "palabra": "Limón",
+   "img": "comida/L.jpg"
+  },
+  {
+   "letra": "LL",
+   "palabra": "Llave",
+   "img": "comida/LL.jpg"
+  },
+  {
+   "letra": "M",
+   "palabra": "Mango",
+   "img": "comida/M.jpg"
+  },
+  {
+   "letra": "N",
+   "palabra": "Níspero",
+   "img": "comida/N.jpg"
+  },
+  {
+   "letra": "Ñ",
+   "palabra": "Ñame",
+   "img": "comida/ENIE.jpg"
+  },
+  {
+   "letra": "O",
+   "palabra": "Ocumo",
+   "img": "comida/O.jpg"
+  },
+  {
+   "letra": "P",
+   "palabra": "Pera",
+   "img": "comida/P.jpg"
+  },
+  {
+   "letra": "Q",
+   "palabra": "Quinoto",
+   "img": "comida/Q.jpg"
+  },
+  {
+   "letra": "R",
+   "palabra": "Rábano",
+   "img": "comida/R.jpg"
+  },
+  {
+   "letra": "S",
+   "palabra": "Sandía",
+   "img": "comida/S.jpg"
+  },
+  {
+   "letra": "T",
+   "palabra": "Tomate",
+   "img": "comida/T.jpg"
+  },
+  {
+   "letra": "U",
+   "palabra": "Uva",
+   "img": "comida/U.jpg"
+  },
+  {
+   "letra": "V",
+   "palabra": "Vainilla",
+   "img": "comida/V.jpg"
+  },
+  {
+   "letra": "W",
+   "palabra": "Wasabi",
+   "img": "comida/W.jpg"
+  },
+  {
+   "letra": "X",
+   "palabra": "Xoconostle",
+   "img": "comida/X.jpg"
+  },
+  {
+   "letra": "Y",
+   "palabra": "Yuca",
+   "img": "comida/Y.jpg"
+  },
+  {
+   "letra": "Z",
+   "palabra": "Zanahoria",
+   "img": "comida/Z.jpg"
+  }
+ ],
+ "animales": [
+  {
+   "letra": "A",
+   "palabra": "Abeja",
+   "img": "animales/A.jpg"
+  },
+  {
+   "letra": "B",
+   "palabra": "Burro",
+   "img": "animales/B.jpg"
+  },
+  {
+   "letra": "C",
+   "palabra": "Conejo",
+   "img": "animales/C.jpg"
+  },
+  {
+   "letra": "CH",
+   "palabra": "Chivo",
+   "img": "animales/CH.jpg"
+  },
+  {
+   "letra": "D",
+   "palabra": "Dinosaurio",
+   "img": "animales/D.jpg"
+  },
+  {
+   "letra": "E",
+   "palabra": "Elefante",
+   "img": "animales/E.jpg"
+  },
+  {
+   "letra": "F",
+   "palabra": "Flamenco",
+   "img": "animales/F.jpg"
+  },
+  {
+   "letra": "G",
+   "palabra": "Ganso",
+   "img": "animales/G.jpg"
+  },
+  {
+   "letra": "H",
+   "palabra": "Hipopótamo",
+   "img": "animales/H.jpg"
+  },
+  {
+   "letra": "I",
+   "palabra": "Iguana",
+   "img": "animales/I.jpg"
+  },
+  {
+   "letra": "J",
+   "palabra": "Jirafa",
+   "img": "animales/J.jpg"
+  },
+  {
+   "letra": "K",
+   "palabra": "Koala",
+   "img": "animales/K.jpg"
+  },
+  {
+   "letra": "L",
+   "palabra": "Lobo",
+   "img": "animales/L.jpg"
+  },
+  {
+   "letra": "LL",
+   "palabra": "Llama",
+   "img": "animales/LL.jpg"
+  },
+  {
+   "letra": "M",
+   "palabra": "Mono",
+   "img": "animales/M.jpg"
+  },
+  {
+   "letra": "N",
+   "palabra": "Nutria",
+   "img": "animales/N.jpg"
+  },
+  {
+   "letra": "Ñ",
+   "palabra": "Ñandú",
+   "img": "animales/ENIE.jpg"
+  },
+  {
+   "letra": "O",
+   "palabra": "Oso",
+   "img": "animales/O.jpg"
+  },
+  {
+   "letra": "P",
+   "palabra": "Panda",
+   "img": "animales/P.jpg"
+  },
+  {
+   "letra": "Q",
+   "palabra": "Quetzal",
+   "img": "animales/Q.jpg"
+  },
+  {
+   "letra": "R",
+   "palabra": "Rinoceronte",
+   "img": "animales/R.jpg"
+  },
+  {
+   "letra": "S",
+   "palabra": "Serpiente",
+   "img": "animales/S.jpg"
+  },
+  {
+   "letra": "T",
+   "palabra": "Tigre",
+   "img": "animales/T.jpg"
+  },
+  {
+   "letra": "U",
+   "palabra": "Unicornio",
+   "img": "animales/U.jpg"
+  },
+  {
+   "letra": "V",
+   "palabra": "Vaca",
+   "img": "animales/V.jpg"
+  },
+  {
+   "letra": "W",
+   "palabra": "Walabí",
+   "img": "animales/W.jpg"
+  },
+  {
+   "letra": "X",
+   "palabra": "Xilófono",
+   "img": "animales/X.jpg"
+  },
+  {
+   "letra": "Y",
+   "palabra": "Yak",
+   "img": "animales/Y.jpg"
+  },
+  {
+   "letra": "Z",
+   "palabra": "Zebra",
+   "img": "animales/Z.jpg"
+  }
+ ]
+}
