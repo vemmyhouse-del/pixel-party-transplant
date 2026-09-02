@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AbecedarioRouteImport } from './routes/abecedario'
 import { Route as AvanzadaRouteImport } from './routes/avanzada'
 import { Route as CalmaRouteImport } from './routes/calma'
+import { Route as ConfiguracionRouteImport } from './routes/configuracion'
 import { Route as EmocionesRouteImport } from './routes/emociones'
 import { Route as InicialRouteImport } from './routes/inicial'
 import { Route as MatematicasRouteImport } from './routes/matematicas'
@@ -42,6 +43,11 @@ const AvanzadaRoute = AvanzadaRouteImport.update({
 const CalmaRoute = CalmaRouteImport.update({
   id: '/calma',
   path: '/calma',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfiguracionRoute = ConfiguracionRouteImport.update({
+  id: '/configuracion',
+  path: '/configuracion',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmocionesRoute = EmocionesRouteImport.update({
@@ -100,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/abecedario': typeof AbecedarioRoute
   '/avanzada': typeof AvanzadaRoute
   '/calma': typeof CalmaRoute
+  '/configuracion': typeof ConfiguracionRoute
   '/emociones': typeof EmocionesRoute
   '/inicial': typeof InicialRoute
   '/matematicas': typeof MatematicasRoute
@@ -116,6 +123,7 @@ export interface FileRoutesByTo {
   '/abecedario': typeof AbecedarioRoute
   '/avanzada': typeof AvanzadaRoute
   '/calma': typeof CalmaRoute
+  '/configuracion': typeof ConfiguracionRoute
   '/emociones': typeof EmocionesRoute
   '/inicial': typeof InicialRoute
   '/matematicas': typeof MatematicasRoute
@@ -133,6 +141,7 @@ export interface FileRoutesById {
   '/abecedario': typeof AbecedarioRoute
   '/avanzada': typeof AvanzadaRoute
   '/calma': typeof CalmaRoute
+  '/configuracion': typeof ConfiguracionRoute
   '/emociones': typeof EmocionesRoute
   '/inicial': typeof InicialRoute
   '/matematicas': typeof MatematicasRoute
@@ -151,6 +160,7 @@ export interface FileRouteTypes {
     | '/abecedario'
     | '/avanzada'
     | '/calma'
+    | '/configuracion'
     | '/emociones'
     | '/inicial'
     | '/matematicas'
@@ -167,6 +177,7 @@ export interface FileRouteTypes {
     | '/abecedario'
     | '/avanzada'
     | '/calma'
+    | '/configuracion'
     | '/emociones'
     | '/inicial'
     | '/matematicas'
@@ -183,6 +194,7 @@ export interface FileRouteTypes {
     | '/abecedario'
     | '/avanzada'
     | '/calma'
+    | '/configuracion'
     | '/emociones'
     | '/inicial'
     | '/matematicas'
@@ -200,6 +212,7 @@ export interface RootRouteChildren {
   AbecedarioRoute: typeof AbecedarioRoute
   AvanzadaRoute: typeof AvanzadaRoute
   CalmaRoute: typeof CalmaRoute
+  ConfiguracionRoute: typeof ConfiguracionRoute
   EmocionesRoute: typeof EmocionesRoute
   InicialRoute: typeof InicialRoute
   MatematicasRoute: typeof MatematicasRoute
@@ -240,6 +253,13 @@ declare module '@tanstack/react-router' {
       path: '/calma'
       fullPath: '/calma'
       preLoaderRoute: typeof CalmaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/configuracion': {
+      id: '/configuracion'
+      path: '/configuracion'
+      fullPath: '/configuracion'
+      preLoaderRoute: typeof ConfiguracionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/emociones': {
@@ -320,6 +340,7 @@ const rootRouteChildren: RootRouteChildren = {
   AbecedarioRoute: AbecedarioRoute,
   AvanzadaRoute: AvanzadaRoute,
   CalmaRoute: CalmaRoute,
+  ConfiguracionRoute: ConfiguracionRoute,
   EmocionesRoute: EmocionesRoute,
   InicialRoute: InicialRoute,
   MatematicasRoute: MatematicasRoute,
