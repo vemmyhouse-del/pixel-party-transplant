@@ -21,11 +21,16 @@ bun add @capacitor/android
 ## 3. Generar el proyecto Android
 
 ```bash
-bun run build            # genera dist/client
+bun run build:android    # genera la SPA estática en .output/public
 bunx cap add android     # crea la carpeta android/
 bunx cap sync android    # copia el sitio compilado al proyecto nativo
 bunx cap open android    # abre Android Studio
 ```
+
+`build:android` usa `vite.config.android.ts`: compila la app en modo
+**SPA estática** (sin servidor Node/Nitro), genera un `index.html` en la raíz
+de `.output/public` y activa el enrutado por hash (`/#/menu`) para que las
+rutas no queden en blanco dentro del WebView de Capacitor.
 
 Desde Android Studio puedes ejecutarlo en un emulador o dispositivo, y
 generar el APK/AAB con **Build > Generate Signed Bundle / APK**.
@@ -33,7 +38,7 @@ generar el APK/AAB con **Build > Generate Signed Bundle / APK**.
 Cada vez que cambies el código:
 
 ```bash
-bun run build && bunx cap sync android
+bun run build:android && bunx cap sync android
 ```
 
 ## 4. Notas sobre la voz (TTS)
