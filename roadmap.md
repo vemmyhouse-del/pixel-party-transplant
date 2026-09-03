@@ -8,4 +8,4 @@
 - [x] Configuración Capacitor para Android Studio
 - [x] Compilación sin errores
 - [x] Verificación en navegador
-- [ ] Empaquetar proyecto en ZIP para entregar al usuario
+- [x] Empaquetar proyecto en ZIP para entregar al usuario
