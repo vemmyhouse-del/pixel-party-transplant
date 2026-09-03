@@ -12,13 +12,6 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  vite: {
-    // Capacitor sirve la app desde https://localhost, por lo que las rutas
-    // absolutas de los assets funcionan correctamente en el WebView.
-    define: {
-      "import.meta.env.VITE_CAPACITOR": JSON.stringify("true"),
-    },
-  },
   nitro: {
     preset: "static",
     output: {
