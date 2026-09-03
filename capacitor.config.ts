@@ -12,7 +12,7 @@ import type { CapacitorConfig } from "@capacitor/cli";
 const config: CapacitorConfig = {
   appId: "com.ocupamor.escolar",
   appName: "OCUPAMOR",
-  webDir: "dist/client",
+  webDir: ".output/public",
   android: {
     allowMixedContent: false,
   },

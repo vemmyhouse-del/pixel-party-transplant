@@ -9,7 +9,8 @@
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "build:android": "VITE_CAPACITOR=true vite build --config vite.config.android.ts && rm -rf .output/public && mkdir -p .output && cp -r dist/client .output/public"
   },
   "overrides": {
     "rolldown": "1.2.1"
