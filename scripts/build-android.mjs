@@ -2,15 +2,15 @@
 //
 //   bun run build:android
 //
-// 1. Compila la SPA con vite.config.android.ts  -> dist/client
-// 2. Copia dist/client                          -> .output/public
+// 1. Compila solo el cliente con Vite            -> dist/android-client
+// 2. Copia la salida y renombra android.html     -> .output/public/index.html
 // 3. Verifica que exista .output/public/index.html (lo que exige Capacitor)
 import { spawnSync } from "node:child_process";
-import { cpSync, existsSync, mkdirSync, rmSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, renameSync, rmSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = process.cwd();
-const clientDir = resolve(root, "dist/client");
+const clientDir = resolve(root, "dist/android-client");
 const outDir = resolve(root, ".output/public");
 
 const npx = process.platform === "win32" ? "npx.cmd" : "npx";
@@ -34,6 +34,12 @@ mkdirSync(resolve(root, ".output"), { recursive: true });
 cpSync(clientDir, outDir, { recursive: true });
 
 const indexHtml = resolve(outDir, "index.html");
+const androidHtml = resolve(outDir, "android.html");
+
+if (existsSync(androidHtml)) {
+  renameSync(androidHtml, indexHtml);
+}
+
 if (!existsSync(indexHtml)) {
   console.error("[android] Falta index.html en .output/public — Capacitor fallará.");
   process.exit(1);
