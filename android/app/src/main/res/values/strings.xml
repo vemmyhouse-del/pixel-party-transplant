@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">OCUPAMOR</string>
+    <string name="title_activity_main">OCUPAMOR</string>
+    <string name="package_name">com.ocupamor.escolar</string>
+    <string name="custom_url_scheme">com.ocupamor.escolar</string>
+</resources>
