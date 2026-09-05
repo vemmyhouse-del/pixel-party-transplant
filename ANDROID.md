@@ -25,7 +25,6 @@ con servidor y no deja el `index.html` en `.output/public`).
 
 ```bash
 bun run build:android    # genera la SPA estática en .output/public (multiplataforma)
-bunx cap add android     # crea la carpeta android/ (solo la primera vez)
 bunx cap sync android    # copia el sitio compilado al proyecto nativo
 bunx cap open android    # abre Android Studio
 ```
@@ -39,10 +38,14 @@ bun run android:open   # abre Android Studio
 
 `build:android` ejecuta `scripts/build-android.mjs`: compila con
 `vite.config.android.ts` en modo **SPA estática** (sin servidor Node/Nitro),
-copia `dist/client` a `.output/public` con Node (funciona en Windows, macOS y
+copia `dist/android-client` a `.output/public` con Node (funciona en Windows, macOS y
 Linux) y verifica que exista `.output/public/index.html`, que es justo el
 archivo que exige Capacitor. También activa el enrutado por hash (`/#/menu`)
 para que las rutas no queden en blanco dentro del WebView.
+
+La carpeta `android/` ya está incluida. Su manifiesto declara permiso de
+Internet y admite conexiones HTTP/HTTPS mediante la configuración de seguridad
+de red incluida.
 
 
 Desde Android Studio puedes ejecutarlo en un emulador o dispositivo, y
