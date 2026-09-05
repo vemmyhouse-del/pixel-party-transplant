@@ -154,6 +154,34 @@
     overscroll-behavior-y: none;
   }
 
+  input,
+  textarea,
+  select,
+  button {
+    font-family: inherit;
+  }
+
+  /* En la WebView de Android un tamaño menor a 16px provoca zoom automático
+     y repintados costosos al escribir. */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+    touch-action: manipulation;
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);

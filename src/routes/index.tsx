@@ -1,7 +1,14 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
 
-import { PrimaryButton, SoftLabel, showToast } from "@/components/ocupamor/ui";
+import {
+  PrimaryButton,
+  SelectField,
+  SoftLabel,
+  TextField,
+  showToast,
+  useField,
+  useSelectField,
+} from "@/components/ocupamor/ui";
 import { login, register, type Role } from "@/lib/store";
 
 export const Route = createFileRoute("/")({
@@ -28,24 +35,26 @@ const ROLES: Role[] = ["representante", "docente", "terapeuta", "tutor"];
 
 function LoginScreen() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [pwd, setPwd] = useState("");
-  const [name, setName] = useState("");
-  const [role, setRole] = useState<Role>("representante");
+  const emailField = useField("");
+  const pwdField = useField("");
+  const nameField = useField("");
+  const roleField = useSelectField(ROLES[0]!);
 
   function doLogin() {
-    const res = login(email, pwd);
+    const res = login(emailField.get(), pwdField.get());
     showToast(res.msg);
     if (res.ok) navigate({ to: "/menu" });
   }
 
   function doRegister() {
-    const res = register(email, pwd, name, role);
+    const res = register(
+      emailField.get(),
+      pwdField.get(),
+      nameField.get(),
+      roleField.get() as Role,
+    );
     showToast(res.msg);
   }
-
-  const inputClass =
-    "min-h-13 w-full rounded-2xl border border-border bg-background px-4 text-base text-foreground outline-none focus:border-primary";
 
   return (
     <div className="mx-auto flex min-h-screen w-full max-w-md flex-col bg-background">
@@ -63,62 +72,37 @@ function LoginScreen() {
             El nombre y el rol solo se necesitan al registrarte.
           </SoftLabel>
 
-          <div className="space-y-1">
-            <SoftLabel bold size="sm">
-              Correo
-            </SoftLabel>
-            <input
-              className={inputClass}
-              type="email"
-              inputMode="email"
-              autoComplete="email"
-              placeholder="correo@ejemplo.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+          <TextField
+            field={emailField}
+            label="Correo"
+            type="email"
+            inputMode="email"
+            autoComplete="email"
+            placeholder="correo@ejemplo.com"
+          />
 
-          <div className="space-y-1">
-            <SoftLabel bold size="sm">
-              Contraseña
-            </SoftLabel>
-            <input
-              className={inputClass}
-              type="password"
-              placeholder="Mínimo 6 caracteres"
-              value={pwd}
-              onChange={(e) => setPwd(e.target.value)}
-            />
-          </div>
+          <TextField
+            field={pwdField}
+            label="Contraseña"
+            type="password"
+            autoComplete="current-password"
+            placeholder="Mínimo 6 caracteres"
+          />
 
-          <div className="space-y-1">
-            <SoftLabel bold size="sm">
-              Nombre
-            </SoftLabel>
-            <input
-              className={inputClass}
-              placeholder="¿Cómo te llamas?"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
+          <TextField
+            field={nameField}
+            label="Nombre"
+            autoCapitalize="words"
+            placeholder="¿Cómo te llamas?"
+          />
 
-          <div className="space-y-1">
-            <SoftLabel bold size="sm">
-              Rol
-            </SoftLabel>
-            <select
-              className={`${inputClass} bg-soft`}
-              value={role}
-              onChange={(e) => setRole(e.target.value as Role)}
-            >
-              {ROLES.map((r) => (
-                <option key={r} value={r}>
-                  {r}
-                </option>
-              ))}
-            </select>
-          </div>
+          <SelectField field={roleField} label="Rol">
+            {ROLES.map((r) => (
+              <option key={r} value={r}>
+                {r}
+              </option>
+            ))}
+          </SelectField>
 
           <div className="space-y-2 pt-1">
             <PrimaryButton big onClick={doLogin}>
