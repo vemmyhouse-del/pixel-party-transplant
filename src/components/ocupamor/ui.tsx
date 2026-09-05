@@ -2,8 +2,8 @@
  *  AudioButton, SoftLabel, cabecera con botón volver, "toast" y barra de progreso). */
 import { Link, useNavigate } from "@tanstack/react-router";
 import { ChevronLeft } from "lucide-react";
-import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
+import type { InputHTMLAttributes, ReactNode, SelectHTMLAttributes } from "react";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { cn } from "@/lib/utils";
