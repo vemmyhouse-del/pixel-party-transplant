@@ -9,5 +9,5 @@
 - [x] Compilación sin errores
 - [x] Verificación en navegador
 - [x] Empaquetar proyecto en ZIP para entregar al usuario
-- [ ] Separar el build Android del pipeline SSR y generar `.output/public/index.html`
-- [ ] Configurar permisos de Internet y tráfico HTTP/HTTPS en Android
+- [x] Separar el build Android del pipeline SSR y generar `.output/public/index.html`
+- [x] Configurar permisos de Internet y tráfico HTTP/HTTPS en Android
