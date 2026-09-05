@@ -240,3 +240,120 @@ export function useSessionUser(): User | null {
 
   return user;
 }
+
+/* ------------------------------------------------------------------ *
+ * Campos de texto sin estado de React.
+ *
+ * En la WebView de Android, un input "controlado" obliga a redibujar la
+ * pantalla en cada tecla; con teclado abierto eso llega a congelar la
+ * interfaz. Estos campos guardan el valor en el propio elemento (ref) y
+ * solo se leen al enviar, así escribir no provoca ningún re-render.
+ * ------------------------------------------------------------------ */
+
+export const fieldClass =
+  "min-h-13 w-full touch-manipulation rounded-2xl border border-border bg-background px-4 text-base text-foreground caret-primary outline-none focus:border-primary";
+
+export type Field<T extends HTMLInputElement | HTMLSelectElement> = {
+  ref: React.RefObject<T | null>;
+  initial: string;
+  get: () => string;
+  set: (v: string) => void;
+};
+
+function useFieldBase<T extends HTMLInputElement | HTMLSelectElement>(
+  initial: string,
+): Field<T> {
+  const ref = useRef<T | null>(null);
+  return useMemo(
+    () => ({
+      ref,
+      initial,
+      get: () => ref.current?.value ?? "",
+      set: (v: string) => {
+        if (ref.current) ref.current.value = v;
+      },
+    }),
+    // El valor inicial solo se aplica en el primer render (defaultValue).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+}
+
+export function useField(initial = "") {
+  return useFieldBase<HTMLInputElement>(initial);
+}
+
+export function useSelectField(initial = "") {
+  return useFieldBase<HTMLSelectElement>(initial);
+}
+
+type TextFieldProps = Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "value" | "defaultValue" | "ref" | "className"
+> & {
+  field: Field<HTMLInputElement>;
+  label?: string;
+  className?: string;
+};
+
+export const TextField = memo(function TextField({
+  field,
+  label,
+  className,
+  ...rest
+}: TextFieldProps) {
+  return (
+    <div className="space-y-1">
+      {label && (
+        <SoftLabel bold size="sm">
+          {label}
+        </SoftLabel>
+      )}
+      <input
+        ref={field.ref}
+        defaultValue={field.initial}
+        autoCapitalize={rest.autoCapitalize ?? "off"}
+        autoCorrect="off"
+        spellCheck={false}
+        className={cn(fieldClass, className)}
+        {...rest}
+      />
+    </div>
+  );
+});
+
+type SelectFieldProps = Omit<
+  SelectHTMLAttributes<HTMLSelectElement>,
+  "value" | "defaultValue" | "ref" | "className"
+> & {
+  field: Field<HTMLSelectElement>;
+  label?: string;
+  className?: string;
+  children: ReactNode;
+};
+
+export const SelectField = memo(function SelectField({
+  field,
+  label,
+  className,
+  children,
+  ...rest
+}: SelectFieldProps) {
+  return (
+    <div className="space-y-1">
+      {label && (
+        <SoftLabel bold size="sm">
+          {label}
+        </SoftLabel>
+      )}
+      <select
+        ref={field.ref}
+        defaultValue={field.initial}
+        className={cn(fieldClass, "bg-soft", className)}
+        {...rest}
+      >
+        {children}
+      </select>
+    </div>
+  );
+});
