@@ -6,8 +6,12 @@ import {
   Card,
   PrimaryButton,
   Screen,
+  SelectField,
   SoftLabel,
+  TextField,
   showToast,
+  useField,
+  useSelectField,
   useSessionUser,
 } from "@/components/ocupamor/ui";
 import { LEARNING_CATEGORIES } from "@/data/content";
@@ -36,9 +40,9 @@ export const Route = createFileRoute("/misiones")({
 function MisionesScreen() {
   const user = useSessionUser();
   const [misiones, setMisiones] = useState<Mission[]>([]);
-  const [titulo, setTitulo] = useState("");
-  const [meta, setMeta] = useState(5);
-  const [cat, setCat] = useState(LEARNING_CATEGORIES[0]![0]);
+  const tituloField = useField("");
+  const metaField = useField("5");
+  const catField = useSelectField(LEARNING_CATEGORIES[0]![0]);
 
   useEffect(() => {
     if (user) setMisiones(getMissions(user.email));
@@ -46,13 +50,15 @@ function MisionesScreen() {
 
   function crear() {
     if (!user) return;
-    if (titulo.trim().length < 3) {
+    const titulo = tituloField.get().trim();
+    if (titulo.length < 3) {
       showToast("Escribe un título para la misión");
       return;
     }
-    addMission(user.email, titulo.trim(), meta, cat);
+    const meta = Math.max(1, Number(metaField.get()) || 1);
+    addMission(user.email, titulo, meta, catField.get());
     setMisiones(getMissions(user.email));
-    setTitulo("");
+    tituloField.set("");
     showToast("Misión creada");
     say("Misión creada");
   }
@@ -64,39 +70,29 @@ function MisionesScreen() {
     setMisiones(next);
   }
 
-  const inputClass =
-    "min-h-12 w-full rounded-2xl border border-border bg-background px-4 text-base text-foreground outline-none focus:border-primary";
-
   return (
     <Screen title="Misiones" subtitle="Retos cortos del día">
       <Card className="space-y-3">
         <SoftLabel bold size="lg">
           Nueva misión
         </SoftLabel>
-        <input
-          className={inputClass}
-          placeholder="Ej. Practicar 5 sílabas"
-          value={titulo}
-          onChange={(e) => setTitulo(e.target.value)}
-        />
+        <TextField field={tituloField} placeholder="Ej. Practicar 5 sílabas" />
         <div className="flex gap-2">
-          <select
-            className={inputClass}
-            value={cat}
-            onChange={(e) => setCat(e.target.value)}
-          >
-            {LEARNING_CATEGORIES.map(([k, label]) => (
-              <option key={k} value={k}>
-                {label}
-              </option>
-            ))}
-          </select>
-          <input
-            className={`${inputClass} w-24 shrink-0 text-center`}
+          <div className="min-w-0 flex-1">
+            <SelectField field={catField}>
+              {LEARNING_CATEGORIES.map(([k, label]) => (
+                <option key={k} value={k}>
+                  {label}
+                </option>
+              ))}
+            </SelectField>
+          </div>
+          <TextField
+            field={metaField}
             type="number"
+            inputMode="numeric"
             min={1}
-            value={meta}
-            onChange={(e) => setMeta(Number(e.target.value) || 1)}
+            className="w-24 shrink-0 text-center"
           />
         </div>
         <PrimaryButton big onClick={crear}>
