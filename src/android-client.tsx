@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider } from "@tanstack/react-router";
 
@@ -13,8 +12,6 @@ if (!rootElement) {
 
 const router = getRouter();
 
-createRoot(rootElement).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
-);
+// Sin StrictMode: en la WebView de Android el doble render de desarrollo
+// duplica efectos y encarece cada interacción con el teclado.
+createRoot(rootElement).render(<RouterProvider router={router} />);
