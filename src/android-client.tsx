@@ -14,7 +14,7 @@ if (!rootElement) {
 // el cursor, el teclado y la composición de texto cuando un input vive dentro
 // de una capa animada con transform. La hoja de estilos usa esta marca para
 // evitar esas capas solo en la aplicación nativa, sin cambiar la versión web.
-document.documentElement.dataset.capacitor = "android";
+document.documentElement.dataset["capacitor"] = "android";
 
 const router = getRouter();
 
