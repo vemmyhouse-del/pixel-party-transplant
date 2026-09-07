@@ -251,7 +251,7 @@ export function useSessionUser(): User | null {
  * ------------------------------------------------------------------ */
 
 export const fieldClass =
-  "min-h-13 w-full touch-manipulation rounded-2xl border border-border bg-background px-4 text-base text-foreground caret-primary outline-none focus:border-primary";
+  "min-h-13 w-full touch-manipulation rounded-2xl border border-border bg-background px-4 text-base text-foreground caret-primary outline-none focus:border-primary disabled:pointer-events-none disabled:opacity-50";
 
 export type Field<T extends HTMLInputElement | HTMLSelectElement> = {
   ref: React.RefObject<T | null>;

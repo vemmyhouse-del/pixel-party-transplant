@@ -172,6 +172,26 @@
     user-select: text;
   }
 
+  /*
+   * Android WebView conserva las animaciones con transform y fill-mode: both
+   * como capas de composición. Los controles de texto dentro de esas capas
+   * pueden dejar de pintar el cursor y bloquear la cola de eventos al abrirse
+   * el teclado. La entrada Android marca el documento antes de montar React;
+   * allí eliminamos transform/animación, pero conservamos el diseño web.
+   */
+  html[data-capacitor="android"] .rise-in {
+    animation: none;
+    transform: none;
+  }
+
+  html[data-capacitor="android"] input,
+  html[data-capacitor="android"] textarea,
+  html[data-capacitor="android"] select {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

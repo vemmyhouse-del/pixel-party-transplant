@@ -11,3 +11,4 @@
 - [x] Empaquetar proyecto en ZIP para entregar al usuario
 - [x] Separar el build Android del pipeline SSR y generar `.output/public/index.html`
 - [x] Configurar permisos de Internet y tráfico HTTP/HTTPS en Android
+- [ ] Eliminar el bloqueo de campos de texto causado por capas animadas en Android WebView
